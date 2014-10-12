@@ -64,13 +64,12 @@ PRODUCT_COPY_FILES += \
     device/lge/w7/prebuilt/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     device/lge/w7/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
     device/lge/w7/prebuilt/etc/audio_effects.conf:system/etc/audio_effects.conf \
+    device/lge/w7/prebuilt/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
     device/lge/w7/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
     device/lge/w7/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/lge/w7/prebuilt/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
     device/lge/w7/prebuilt/etc/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf \
     device/lge/w7/prebuilt/usr/idc/touch_dev.idc:system/usr/idc/touch_dev.idc \
-    device/lge/w7/prebuilt/usr/keylayout/gpio-keys_d415.kl:system/usr/keylayout/gpio-keys_d415.kl \
-    device/lge/w7/prebuilt/usr/keylayout/gpio-keys_d410.kl:system/usr/keylayout/gpio-keys_d410.kl \
     device/lge/w7/prebuilt/etc/init.zetaw.fm.sh:system/etc/init.zetaw.fm.sh \
     device/lge/w7/prebuilt/etc/init.zetaw.ssr.wifi.sh:system/etc/init.zetaw.ssr.wifi.sh \
     device/lge/w7/prebuilt/etc/init.zetaw.wifi.sh:system/etc/init.zetaw.wifi.sh \
@@ -89,7 +88,6 @@ PRODUCT_COPY_FILES += \
     device/lge/w7/prebuilt/etc/nfcee_access.xml:system/etc/nfcee_access.xml \
     device/lge/w7/prebuilt/etc/quipc.conf:system/etc/quipc.conf \
     device/lge/w7/prebuilt/etc/init.d/10nfc_checker:system/etc/init.d/10nfc_checker \
-    device/lge/w7/prebuilt/etc/init.d/11keys_checker:system/etc/init.d/11keys_checker
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
@@ -197,7 +195,7 @@ PRODUCT_PACKAGES += \
     libebtc
 
 # FM radio
-PRODUCT_PACKAGES += \
+ PRODUCT_PACKAGES += \
     qcom.fmradio \
     libqcomfm_jni \
     FM2 \
@@ -280,7 +278,7 @@ PRODUCT_PACKAGES += \
     hostapd.accept \
     hostapd.deny \
     hostapd_default.conf \
-    libnetcmdiface
+    libnetcmdiface.so
 
 # QCOM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -379,10 +377,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ksm.default=1
 
 # CmUpdater
-PRODUCT_PROPERTY_OVERRIDES += \
-    cm.updater.uri=http://api.quarx.cm-for.us/api \
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    cm.updater.uri=http://api.quarx.cm-for.us/api \
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=-5
 
 PRODUCT_LOCALES := en_US
 PRODUCT_LOCALES += hdpi

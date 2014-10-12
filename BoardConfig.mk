@@ -23,7 +23,6 @@
 
 USE_CAMERA_STUB := false
 TARGET_NO_BOOTLOADER := true
-
 TARGET_SPECIFIC_HEADER_PATH += device/lge/w7/include
 
 # Vendor Init
@@ -37,6 +36,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno305
 TARGET_BOARD_PLATFORM := msm8226
 TARGET_CPU_VARIANT := cortex-a7
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+TARGET_USE_KINGFISHER_OPTIMIZATION := true
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
@@ -47,11 +47,15 @@ TARGET_BOOTLOADER_BOARD_NAME := w7
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_CUSTOM_BOOTIMG_MK := device/lge/w7/mkbootimg.mk
 TARGET_KERNEL_SOURCE := kernel/lge/msm8226
-TARGET_KERNEL_CONFIG := cm11_msm8226_defconfig
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=31 msm_rtb.filter=0x37 androidboot.hardware=w7
+TARGET_KERNEL_CONFIG := w7_open_cis_defconfig
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=31 msm_rtb.filter=0x37 androidboot.hardware=w7 lge.fmradio=1 lge.nfc=nxp
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+# Custom flag. Added by: shinobisoft @ xda-developers
+TARGET_BOARD_VARIANT := LG-D415
+BOARD_CUSTOM_USE_DTS := msm8226-w7_open_cis
+
 
 # Global flags
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DLG_CAMERA_HARDWARE
@@ -75,7 +79,7 @@ TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 TARGET_QCOM_MEDIA_VARIANT := caf-new
 
 # GPS
-TARGET_NO_RPC := true
+TARGET_NO_RPC := false
 
 # Graphics
 BOARD_EGL_CFG := device/lge/w7/prebuilt/egl.cfg
@@ -155,13 +159,13 @@ RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 DEVICE_RESOLUTION := 540x960
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_EXTERNAL_STORAGE_PATH := "/sdcard"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
+TW_EXTERNAL_STORAGE_PATH := "/storage/sdcard1"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_FLASH_FROM_STORAGE := true
 BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
-TW_INTERNAL_STORAGE_PATH := "/data/media"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_INTERNAL_STORAGE_PATH := "/storage/sdcard0"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data/media"
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_HAS_NO_SELECT_BUTTON := true
